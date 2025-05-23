@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        // // esta é uma função normal (síncrona)
+        // function funcao1(){
+        //     return 'teste 0';
+        // }
+
+        // console.log(funcao1());
+
+
+        // // vamos transformar a função numa função assíncrona
+        // // FUNÇÕES ASSÍNCRONAS RETORNAM SEMPRE PROMISES
+        // async function funcao1(){
+        //     return 'teste 1';
+        // }
+
+        // console.log(funcao1());
+
+
+
+        // // para poder consumir os dados de retorno, podemos usar a expressão THEN
+        // async function funcao1(){
+        //     return 'teste 1';
+        // }
+
+        // console.log(funcao1().then(resposta => console.log(resposta)));
+
+
+
+
+
+        // ----------------------------
+        // para que ser o await? Só funciona dentro de funções assíncronas.
+        // pode ser usado antes de qualquer promessa, para que o código pare nesse local até que a promessa seja cumprida.
+
+        async function funcao1(){
+
+            let resultado = await fetch('https://httpstat.us/404');
+            let paises = await resultado.json();
+            return paises;
+        }
+
+        funcao1()
+        .then(dados => console.log(dados))
+        .catch(err => console.log('teste'));
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+
+<body>
+
+    <h3>Lista de clientes</h3>
+    <hr>
+    <button id="btn_cliente">Carregar clientes</button>
+    <div id="clientes"></div>
+
+    <script>
+
+        document.querySelector("#btn_cliente").addEventListener('click', () => {
+
+            let request = new XMLHttpRequest();
+            request.open('get', 'http://localhost/aula_04/dados.json', true);
+            request.onload = function(){
+                
+                let clientes = JSON.parse(this.response);
+
+                clientes.forEach(cliente => {
+                    let p = document.createElement('p');
+                    p.textContent = cliente;
+                    document.querySelector("#clientes").appendChild(p);
+                });
+            }
+            request.send();
+
+        })
+
+    </script>
+
+</body>
+
+</html>

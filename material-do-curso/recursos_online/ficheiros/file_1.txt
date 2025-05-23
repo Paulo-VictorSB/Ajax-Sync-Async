@@ -1,0 +1,1 @@
+Este texto faz parte do conjunto de recursos do módulo de Ajax e está alojado num servidor web.

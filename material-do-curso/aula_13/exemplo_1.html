@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+
+<body>
+
+    <script>
+
+        fetch('https://restcountries.com/v3.1/all')
+        .then(dados => {
+            return dados.json()
+        })
+        .then(json => {
+            let paises = json;
+            paises.forEach(pais => {
+                console.log(pais.name.common);
+            })
+        })
+        .catch(erro => {
+            console.log('Aconteceu um erro:' + erro.message);
+        })
+
+    </script>
+
+</body>
+
+</html>

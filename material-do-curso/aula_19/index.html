@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+<body>
+    
+    <h3>Lista de clientes da loja</h3>
+    <ul id="lista_clientes"></ul>
+    <button id="btn_ajax">Carregar a lista de clientes</button>
+
+    <script>
+
+        document.querySelector("#btn_ajax").addEventListener('click', () => {
+
+            fetch("http://localhost/recursos_online/ficheiros/clients_2.json")
+            .then(response => {
+                if(response.status === 200){
+                    return response.json();
+                } else {
+                    throw Error('Lista de clientes indisponível');
+                }
+            })
+            .then(clientes => {
+                clientes.forEach(cliente => {
+                    let li = document.createElement('li');
+                    li.innerHTML = `<strong>${cliente.name}</strong> | ${cliente.email} | ${cliente.phone}`;
+                    document.querySelector('#lista_clientes').appendChild(li);
+                });
+            })
+            .catch(error_message => {
+                let error = document.createElement('p');
+                error.style.color = "red";
+                error.textContent = error_message.message;
+                document.body.appendChild(error);
+            })
+        })
+
+    </script>
+
+</body>
+</html>

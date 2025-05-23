@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        /* 
+        A forma mais simples consiste em chamar o método fetch e passar a URL do endpoint onde vamos buscar os dados.
+        Como a fetch API retorna sempre uma promise, podemos usar os métodos das promises: then, catch, finally
+        */
+        // fetch('https://restcountries.com/v3.1/all')
+
+        fetch('https://restcountries.com/v3.1/all')
+            .then(response => { 
+                return response.json()
+            })
+            .then(paises => console.log(paises))
+
+    </script>
+</body>
+
+</html>

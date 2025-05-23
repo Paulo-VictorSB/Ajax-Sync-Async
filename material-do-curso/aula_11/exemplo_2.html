@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks</title>
+</head>
+<body>
+    
+    <button>Executar</button>
+    
+    <h3></h3>
+
+    <script>
+
+        let host = "http://localhost/aula_11/";
+
+        // -----------------------------------------------------------
+        function buscarTexto(ficheiro, callback){
+            let request = new XMLHttpRequest();
+            request.open('get', host + ficheiro);
+            request.onload = function(){
+                callback(request.response);
+            }
+            request.send();
+        }
+
+        // -----------------------------------------------------------
+        function apresentarTexto(dados){
+            document.querySelector("h3").textContent = dados;
+        }
+
+        document.querySelector("button").addEventListener('click', () => {
+            buscarTexto('dados2.txt', apresentarTexto);
+        })
+
+    </script>
+
+</body>
+</html>

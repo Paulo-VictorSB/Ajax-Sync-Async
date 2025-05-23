@@ -1,0 +1,27 @@
+[
+    {
+        "name": "joao",
+        "email": "joao@gmail.com",
+        "phone": 111111111
+    },
+    {
+        "name": "ana",
+        "email": "ana@gmail.com",
+        "phone": 222222222
+    },
+    {
+        "name": "carlos",
+        "email": "carlos@gmail.com",
+        "phone": 333333333
+    },
+    {
+        "name": "antonio",
+        "email": "antonio@gmail.com",
+        "phone": 444444444
+    },
+    {
+        "name": "manuela",
+        "email": "manuela@gmail.com",
+        "phone": 555555555
+    }
+]

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Síncrono</title>
+</head>
+
+<body>
+
+    <button>Iniciar processos...</button>
+
+    <script>
+
+        function funcao1() {
+            console.log('Processo 1');
+        }
+
+        function funcao2() {
+            console.log('Processo 2');
+        }
+
+        function funcao3() {
+            console.log('Processo 3');
+        }
+
+        function funcao4() {
+            let a = 0;
+            for (let t = 0; t < 5000000000; t++) {
+                a++;
+            }
+
+            console.log('Processo 4 concluído');
+        }
+
+        document.querySelector("button").addEventListener('click', () => {
+
+            funcao1();
+            funcao2();
+            funcao4();
+            funcao3();
+
+        })
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+<body>
+    
+    <h3>Vai aparecer um parágrafo de texto vindo do servidor.</h3>
+    <p id="content"></p>
+    <button id="cmd_ajax">Executar pedido</button>
+
+    <script>
+
+        document.querySelector("#cmd_ajax").addEventListener('click', () => {
+
+            fetch('http://localhost/recursos_online/ficheiros/file_2.txt')
+            .then(response => {
+                if(response.status !== 200){
+                    throw Error('Não foi possível obter o recurso pretendido.');
+                } else {
+                    return response.text();
+                }
+            })
+            .then(texto => {
+                document.querySelector("#content").textContent = texto;
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+
+        })
+
+    </script>
+
+</body>
+</html>

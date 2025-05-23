@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+
+<body>
+
+    <h3>Exemplo simples de JavaScript a atualizar dados na página</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, culpa quia! Nemo quia magnam alias inventore distinctio repudiandae maiores accusamus dicta, libero voluptatem! Libero molestias est, non tempore impedit ducimus?</p>
+
+    <h3>Qual será o texto que vem em seguida?</h3>
+
+    <p id="texto"></p>
+
+    <button id="botao">Apresentar o texto</button>
+
+    <script>
+        document.querySelector("#botao").addEventListener('click', () => {
+            
+            // -------------------------------------------------------------
+            // vamos usar um objeto do tipo XMLHttpRequest
+            let request = new XMLHttpRequest();
+
+            // -------------------------------------------------------------
+            // preparar o pedido
+            // (metodo, url, async)
+            request.open('get', 'http://localhost/aula_02/exemplo_2/texto1.txt', true);
+
+            // -------------------------------------------------------------
+            // preparar uma função callback
+            request.onreadystatechange = function () {
+
+                console.log(request.readyState, request.status)
+
+                // verificar se a resposta está pronta
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+
+                        console.log('OK');
+                        console.log(request.response)
+
+                    } else {
+                        console.log('Erro!')
+                    }
+                }
+
+            }
+
+            // -------------------------------------------------------------
+            // efetuar o pedido
+            request.send();
+
+        })
+    </script>
+
+</body>
+
+</html>

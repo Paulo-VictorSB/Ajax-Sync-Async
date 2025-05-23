@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+
+<body>
+
+    <h3>Lista de clientes da loja</h3>
+
+    <select id="select_clientes">
+        <option value=""></option>
+    </select>
+
+    <h2 id="nome"></h2>
+    <h4 id="telefone"></h4>
+    <h4 id="email"></h4>
+
+    <script>
+
+        let select_clientes = document.querySelector("#select_clientes");
+
+        function carregarClientes() {
+            fetch("http://localhost/recursos_online/ficheiros/clients_1.json")
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        throw Error("Lista de clientes indisponível");
+                    }
+                })
+                .then(clientes => {
+                    clientes.forEach((cliente, index) => {
+                        let option = document.createElement('option');
+                        option.value = index;
+                        option.textContent = cliente.name;
+                        select_clientes.appendChild(option);
+                    });
+                })
+                .catch(error_message => {
+                    let error = document.createElement('p');
+                    error.style.color = "red";
+                    error.textContent = error_message.message;
+                    document.body.appendChild(error);
+                })
+        }
+
+        select_clientes.addEventListener('change', () => {
+
+            // se o valor for vazio
+            let id_cliente = select_clientes.value;
+            if(id_cliente === ''){
+                document.querySelector("#nome").textContent = "";
+                document.querySelector("#telefone").textContent = "";
+                document.querySelector("#email").textContent = "";
+                return;
+            }
+
+            fetch("http://localhost/recursos_online/ficheiros/clients_1.json")
+                .then(response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else {
+                        throw Error('Lista de clientes indisponível.');
+                    }
+                })
+                .then(clientes => {
+                    let cliente = clientes[id_cliente];
+                    document.querySelector('#nome').textContent = cliente.name;
+                    document.querySelector('#telefone').textContent = cliente.phone;
+                    document.querySelector('#email').textContent = cliente.email;
+                })
+                .catch(error_message => {
+                    let error = document.createElement('p');
+                    error.style.color = "red";
+                    error.textContent = error_message.message;
+                    document.body.appendChild(error);
+                })
+
+        })
+
+        carregarClientes();
+
+    </script>
+
+</body>
+
+</html>

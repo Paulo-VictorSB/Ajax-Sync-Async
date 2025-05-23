@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul></ul>
+
+    <script>
+
+        fetch('https://restcountries.com/v3.1/all')
+        .then(response => response.json())
+        .then(paises => {
+            let ul = document.querySelector('ul');
+            paises.forEach(pais => {
+                let li = document.createElement('li');
+                li.textContent = pais.name.common;
+                ul.appendChild(li);
+            });
+        })
+
+        async function getPaises(){
+            let dados = await fetch('https://restcountries.com/v3.1/all');
+            let paises = await dados.json();
+            console.log(paises);
+        }
+        getPaises();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+
+<body>
+
+    <h3>Lista de clientes</h3>
+    <hr>
+    <button id="btn_cliente">Carregar clientes</button>
+
+    <div id="results" style="display: none">
+        <table id="table_results" border="1">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <p id="no_results" style="display: none;">Não foram encontrados registos de clientes.</p>
+
+
+
+    <script>
+        document.querySelector("#btn_cliente").addEventListener('click', () => {
+            let request = new XMLHttpRequest();
+            request.open('get', 'http://localhost/aula_06/dados.json', true);
+            request.onload = function () {
+
+                // coloca os dois componentes invisíveis
+                document.querySelector("#results").style.display = "none";
+                document.querySelector("#no_results").style.display = "none";
+
+                // apresentar os resultados na tabela
+                clientes = JSON.parse(this.response);
+
+                if (clientes.length > 0) {
+
+                    let table = document.querySelector("#table_results tbody");
+
+                    clientes.forEach(cliente => {
+                        let tr = document.createElement('tr');
+
+                        let td_nome = document.createElement('td');
+                        td_nome.innerHTML = cliente.nome;
+
+                        let td_telefone = document.createElement('td');
+                        td_telefone.innerHTML = cliente.telefone;
+
+                        let td_email = document.createElement('td');
+                        td_email.innerHTML = cliente.email;
+
+                        tr.appendChild(td_nome);
+                        tr.appendChild(td_telefone);
+                        tr.appendChild(td_email);
+                        table.appendChild(tr);
+                    });
+
+                    document.querySelector("#results").style.display = "block";
+
+                } else {
+
+                    // mostra a mensagem de inexistência de dados.
+                    document.querySelector("#no_results").style.display = "block";
+
+                }
+
+            }
+            request.send();
+        })
+
+    </script>
+
+</body>
+
+</html>
