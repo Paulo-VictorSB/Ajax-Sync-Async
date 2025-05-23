@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+
+<body>
+
+    <h3>Exemplo simples de JavaScript para atualizar dados na página</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae iusto nihil quo est, ex tempora ut provident,
+        facilis, officia maiores quos? Earum numquam explicabo, eius omnis ab recusandae sint optio?</p>
+
+    <h3>Qual texo será que vem em seguida?</h3>
+
+    <p id="texto"></p>
+
+    <button id="botao">Apresentar o texto</button>
+
+    <script>
+        document.querySelector('#botao').addEventListener('click', () => {
+
+            let request = new XMLHttpRequest();
+
+            request.open('get', 'http://localhost/Ajax-Sync-Async/aula01/texto.txt', true);
+
+            request.onload = function () {
+                if (request.status = 200) {
+                    // console.log("Sucesso");
+                    // console.log(this.response);
+
+                    document.querySelector('#texto').textContent = this.response;
+                }
+            }
+
+            request.send();
+        });
+    </script>
+
+</body>
+
+</html>
