@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "nome": "Ana Souza",
+        "email": "ana.souza@example.com",
+        "telefone": "(11) 91234-5678",
+        "endereco": "Rua das Flores, 123, São Paulo - SP",
+        "data_nascimento": "1990-05-12"
+    },
+    {
+        "id": 2,
+        "nome": "Carlos Oliveira",
+        "email": "carlos.oliveira@example.com",
+        "telefone": "(21) 99876-5432",
+        "endereco": "Av. Atlântica, 456, Rio de Janeiro - RJ",
+        "data_nascimento": "1985-11-23"
+    },
+    {
+        "id": 3,
+        "nome": "Fernanda Lima",
+        "email": "fernanda.lima@example.com",
+        "telefone": "(31) 93456-7890",
+        "endereco": "Rua da Paz, 789, Belo Horizonte - MG",
+        "data_nascimento": "1992-07-08"
+    },
+    {
+        "id": 4,
+        "nome": "João Pereira",
+        "email": "joao.pereira@example.com",
+        "telefone": "(41) 97654-3210",
+        "endereco": "Av. Paraná, 321, Curitiba - PR",
+        "data_nascimento": "1988-02-17"
+    },
+    {
+        "id": 5,
+        "nome": "Mariana Costa",
+        "email": "mariana.costa@example.com",
+        "telefone": "(51) 98765-4321",
+        "endereco": "Rua das Palmeiras, 654, Porto Alegre - RS",
+        "data_nascimento": "1995-09-30"
+    },
+    {
+        "id": 6,
+        "nome": "Pedro Santos",
+        "email": "pedro.santos@example.com",
+        "telefone": "(71) 91234-8765",
+        "endereco": "Av. Sete de Setembro, 987, Salvador - BA",
+        "data_nascimento": "1991-03-14"
+    },
+    {
+        "id": 7,
+        "nome": "Beatriz Almeida",
+        "email": "beatriz.almeida@example.com",
+        "telefone": "(85) 92345-6789",
+        "endereco": "Rua do Sol, 112, Fortaleza - CE",
+        "data_nascimento": "1993-06-21"
+    },
+    {
+        "id": 8,
+        "nome": "Lucas Ferreira",
+        "email": "lucas.ferreira@example.com",
+        "telefone": "(62) 93456-1234",
+        "endereco": "Av. Goiás, 334, Goiânia - GO",
+        "data_nascimento": "1989-12-05"
+    },
+    {
+        "id": 9,
+        "nome": "Patrícia Mendes",
+        "email": "patricia.mendes@example.com",
+        "telefone": "(98) 99876-3456",
+        "endereco": "Rua Maranhão, 221, São Luís - MA",
+        "data_nascimento": "1994-04-09"
+    },
+    {
+        "id": 10,
+        "nome": "Rafael Lima",
+        "email": "rafael.lima@example.com",
+        "telefone": "(27) 98765-1234",
+        "endereco": "Av. Vitória, 556, Vitória - ES",
+        "data_nascimento": "1987-08-25"
+    }
+]

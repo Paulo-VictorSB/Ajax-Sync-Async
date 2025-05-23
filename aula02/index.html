@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+
+<body>
+
+    <h3>Lista de clientes</h3>
+
+    <button onclick="requisitar_dados()">Carregar clientes</button>
+
+    <p id="data"></p>
+
+    <script>
+
+        function requisitar_dados() {
+            let request = new XMLHttpRequest();
+
+            request.open('get', 'http://localhost/Ajax-Sync-Async/aula02/dados.json', true);
+
+            request.onload = function () {
+                if (request.status == 200) {
+                    let data = JSON.parse(request.response);
+                    let texto = '';
+                    data.forEach(e => {
+                        texto += `ID: ${e.id}, Nome: ${e.nome}, Email: ${e.email}, Telefone: ${e.telefone}<br>`;
+                    });
+                    document.querySelector('#data').innerHTML = texto;
+                }
+            }
+
+
+            request.send();
+        }
+
+    </script>
+
+</body>
+
+</html>
