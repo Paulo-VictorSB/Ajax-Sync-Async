@@ -1,0 +1,1 @@
+Nesta aula, vamos ver como podemos operar com dados mais complexos do json.

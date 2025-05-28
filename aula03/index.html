@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operações com dados complexos - JSON</title>
+</head>
+
+<body>
+
+    <h3>Lista de clientes</h3>
+    <hr>
+    <button id="btn_cliente">Carregar clientes</button>
+    <id id="clientes"></id>
+
+    <script>
+        document.querySelector("#btn_cliente").addEventListener('click', () => {
+            let request = new XMLHttpRequest();
+
+            request.open('get', 'http://localhost/Ajax-Sync-Async/aula03/dados.json', true);
+            request.onload = function () {
+
+                let clientes = JSON.parse(this.response);
+
+                clientes.forEach(cliente => {
+                    let p = document.createElement('p');
+                    p.innerHTML = `Nome - ${cliente.nome}, <br>
+                                   Telefone - ${cliente.telefone}, <br>
+                                   Email - ${cliente.email} .
+                                  `
+                    document.querySelector('#clientes').appendChild(p);
+                });
+
+            }
+            request.send();
+        })
+    </script>
+
+</body>
+
+</html>
