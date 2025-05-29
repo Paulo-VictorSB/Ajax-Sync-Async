@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operações com dados complexos - JSON</title>
+    <style>
+        table {
+            border: 1px solid black;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Lista de clientes</h3>
+    <hr>
+    <button id="btn_cliente">Carregar clientes</button>
+
+    <div id="results" style="display: none;">
+        <table id="table_results">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <script>
+        document.querySelector("#btn_cliente").addEventListener('click', () => {
+            let results = document.querySelector('#results');
+            let table = document.querySelector('#table_results');
+            let tbody = document.createElement('tbody');
+            const tbody_filho = table.querySelector('tbody');
+            let request = new XMLHttpRequest();
+
+            if (tbody_filho) {
+                console.log('resultados já existentes');
+            } else {
+                request.open('get', 'http://localhost/Ajax-Sync-Async/aula03/dados.json', true);
+                request.onload = function () {
+
+                    let clientes = JSON.parse(this.response);
+                    results.style.display = 'block';
+
+                    clientes.forEach(cliente => {
+                        let tr = document.createElement('tr');
+
+                        let nome = document.createElement('td');
+                        nome.innerHTML = cliente.nome;
+
+                        let email = document.createElement('td');
+                        email.innerHTML = cliente.email;
+
+                        let telefone = document.createElement('td');
+                        telefone.innerHTML = cliente.telefone;
+
+                        tr.append(nome, email, telefone);
+                        tbody.appendChild(tr);
+                    })
+
+                    table.appendChild(tbody);
+
+                }
+                request.send();
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>
