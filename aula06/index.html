@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+    
+    <script>
+
+        document.body.innerHTML = '<strong>PRIMEIRA AÇÃO</strong><br>';
+
+        fetch("https://restcountries.com/v3.1/all")
+        .then(dados => {
+            return dados.json();
+        })
+        .then(json => {
+            let paises = json;
+            paises.forEach(pais => {
+                document.body.innerHTML += `${pais.name.common} <br>`;
+            });
+        })
+        .catch(erro => {
+            document.body.innerHTML += 'Aconteceu um erro: ' + erro.message;
+        })
+
+        document.body.innerHTML += '<strong>SEGUNDA AÇÃO</strong> <br>';
+
+    </script>
+</body>
+</html>
