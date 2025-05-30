@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API - Ex2</title>
+</head>
+
+<body>
+
+    <ul></ul>
+    <ol></ol>
+    <script>
+
+        fetch('https://restcountries.com/v3.1/all')
+            .then(response => response.json())
+            .then(data => {
+                let ul = document.querySelector('ul');
+                data.forEach(pais => {
+                    let li = document.createElement('li');
+                    li.innerHTML = pais.name.common;
+                    ul.append(li);
+                })
+            })
+
+        // ou
+
+        async function getPaises() {
+            let dados = await fetch('https://restcountries.com/v3.1/all');
+            let paises = await dados.json();
+
+            let ul = document.querySelector('ol');
+            paises.forEach(pais => {
+                let li = document.createElement('li');
+                li.innerHTML = pais.name.common;
+                ul.append(li);
+            })
+        }
+        getPaises();
+
+    </script>
+
+</body>
+
+</html>
