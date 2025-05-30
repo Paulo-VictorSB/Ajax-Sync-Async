@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscando um ficheiro de Texto com Ajax</title>
+</head>
+
+<body>
+
+    <button id="carregar">Carregar texto</button>
+    <p id="texto"></p>
+
+    <script>
+
+        document.querySelector('#carregar').addEventListener('click', () => {
+
+            let texto = document.querySelector('#texto');
+            texto.innerHTML = 'Carregando..';
+
+            fetch("http://localhost/recursos_online/ficheiros/file_1.txt")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Houve um erro ao requisitar o texto no servidor.");
+                    return;
+                }
+
+                return response.text()
+            })
+            .then(response => {
+                texto.innerHTML = response;
+            })
+            .catch(error => {
+                texto.innerHTML = error.message;
+            })
+        })
+
+    </script>
+
+</body>
+
+</html>
