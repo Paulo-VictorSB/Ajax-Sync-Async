@@ -23,7 +23,6 @@
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Houve um erro ao requisitar o texto no servidor.");
-                    return;
                 }
 
                 return response.text()
